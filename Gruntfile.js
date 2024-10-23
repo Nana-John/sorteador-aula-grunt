@@ -36,6 +36,10 @@ module.exports = function(grunt) {
                         {
                             match: 'ENDERECO_DO_CSS', 
                             replacement: './styles/main.css'
+                        },
+                        {
+                            match: 'ENDERECO_DO_JS', 
+                            replacement: '../src/scripts/main.js'
                         }
                     ],
                     prefix:'@@'
@@ -81,13 +85,6 @@ module.exports = function(grunt) {
             }
         },
         clean: ['prebuild'],
-        uglify: {
-            target: {
-            files: {
-                'dist/scripts/main.min.js': 'src/scripts/main.js'
-            }
-            }
-        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-less');  
@@ -102,5 +99,8 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', ['less:development', 'replace:dev', 'watch']);
 
     // Tarefa de produção
-    grunt.registerTask('build', ['clean', 'less:production', 'htmlmin:dist', 'replace:dist', 'uglify']);
+    grunt.registerTask('build', ['less:production', 'htmlmin:dist', 'replace:dist', 'clean']);
+    // Tarefa padrão
+    grunt.registerTask('default', ['dev']);
+
 };
