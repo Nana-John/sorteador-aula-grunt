@@ -23,5 +23,8 @@
     "grunt-replace": "^2.0.2",
     "grunt-sass": "^3.1.0",
     "sass": "^1.79.4"
+  },
+  "dependencies": {
+    "specificity": "^1.0.0"
   }
 }
